@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('posts.urls')), # new
     path('api-auth/', include('rest_framework.urls')), # new
+    path('api/v1/rest-auth/', include('rest_auth.urls')), # new
     
 ]
 
