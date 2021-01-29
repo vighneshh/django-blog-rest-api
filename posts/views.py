@@ -3,9 +3,11 @@ from .models import Post
 from .serializers import PostSerializer
 
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes #new
 from rest_framework.response import Response
 
+from rest_framework.permissions import IsAuthenticated #new
+from .permissions import IsAuthorOrReadOnly # new
 
 
 
@@ -27,6 +29,7 @@ def PostList(request):
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthorOrReadOnly, IsAuthenticated])
 def PostDetail(request, pk):
 	"""
 	Retrieve, update or delete a post instance.
