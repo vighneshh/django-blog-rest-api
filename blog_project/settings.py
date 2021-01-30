@@ -37,12 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites', # new
 
     # 3rd-party apps
     'rest_framework', # new
     'rest_framework.authtoken', # new
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
     'rest_auth', # new
+    'rest_auth.registration', # new
 
     # Local
     'posts.apps.PostsConfig', # new
@@ -131,8 +135,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'PostList'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+SITE_ID = 1 # new
