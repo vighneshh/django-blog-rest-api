@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 
     # 3rd-party apps
     'rest_framework', # new
+    
 
     # Local
     'posts.apps.PostsConfig', # new
@@ -109,7 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
 'DEFAULT_PERMISSION_CLASSES': [
 'rest_framework.permissions.IsAuthenticated',
-]
+],
+'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+],
 }
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
