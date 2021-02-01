@@ -1,6 +1,8 @@
 # from rest_framework import generics
+from django.contrib.auth import get_user_model # new
 from .models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, UserSerializer # new
+from rest_framework import generics #new
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes #new
@@ -54,10 +56,13 @@ def PostDetail(request, pk):
 		post.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)
 
-# class PostList(generics.ListCreateAPIView):
-# 	queryset = Post.objects.all()
-# 	serializer_class = PostSerializer
+class UserList(generics.ListAPIView): # new
+	"""
+    List all Users.
+    """
+	queryset = get_user_model().objects.all()
+	serializer_class = UserSerializer
 
-# class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-# 	queryset = Post.objects.all()
-# 	serializer_class = PostSerializer
+class UserDetail(generics.RetrieveAPIView): # new
+	queryset = get_user_model().objects.all()
+	serializer_class = UserSerializer
