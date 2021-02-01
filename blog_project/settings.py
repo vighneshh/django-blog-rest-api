@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'rest_auth', # new
     'rest_auth.registration', # new
 
+    
+    'drf_yasg', #new
+
     # Local
     'posts.apps.PostsConfig', # new
 ]
@@ -146,4 +149,5 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 SITE_ID = 1 # new
 
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+# REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+

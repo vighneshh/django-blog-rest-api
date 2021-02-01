@@ -4,8 +4,7 @@ from .views import UserList, UserDetail
 from . import views
 
 urlpatterns = [
-# path('<int:pk>/', PostDetail.as_view()),
-# path('', PostList.as_view()),
+
 path('<int:pk>/', views.PostDetail, name='PostDetail'),
 path('', views.PostList, name='PostList'),
 path('users/', UserList.as_view()), # new
